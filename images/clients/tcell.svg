@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" width="120" height="50" fill="#C2613A">
+  <!-- Signal dots -->
+  <circle cx="12" cy="34" r="4" fill="#C2613A"/>
+  <circle cx="24" cy="28" r="4" fill="#C2613A" opacity="0.7"/>
+  <circle cx="36" cy="22" r="4" fill="#C2613A" opacity="0.4"/>
+  <!-- Text -->
+  <text x="48" y="35" font-family="Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="1" fill="#C2613A">Tcell</text>
+</svg>

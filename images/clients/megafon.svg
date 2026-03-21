@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" width="160" height="50" fill="#C2613A">
+  <!-- Circle mark -->
+  <circle cx="18" cy="25" r="12" fill="#C2613A" opacity="0.15"/>
+  <circle cx="18" cy="25" r="6" fill="#C2613A"/>
+  <!-- Text -->
+  <text x="38" y="33" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#C2613A">MegaFon</text>
+</svg>

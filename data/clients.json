@@ -1,0 +1,80 @@
+{
+  "clients": [
+    {
+      "id": "world-bank",
+      "name_en": "World Bank",
+      "name_ru": "Всемирный банк",
+      "logo": "/images/clients/world-bank.svg",
+      "type": "direct",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "id": "giz",
+      "name_en": "GIZ",
+      "name_ru": "GIZ",
+      "logo": "/images/clients/giz.svg",
+      "type": "direct",
+      "visible": true,
+      "order": 2
+    },
+    {
+      "id": "adb",
+      "name_en": "Asian Development Bank",
+      "name_ru": "Азиатский банк развития",
+      "logo": "/images/clients/adb.svg",
+      "type": "direct",
+      "visible": true,
+      "order": 3
+    },
+    {
+      "id": "coca-cola",
+      "name_en": "Coca-Cola",
+      "name_ru": "Coca-Cola",
+      "logo": "/images/clients/coca-cola.svg",
+      "type": "direct",
+      "visible": true,
+      "order": 4
+    },
+    {
+      "id": "megafon",
+      "name_en": "Megafon",
+      "name_ru": "Мегафон",
+      "logo": "/images/clients/megafon.svg",
+      "type": "direct",
+      "visible": true,
+      "order": 5
+    },
+    {
+      "id": "tcell",
+      "name_en": "Tcell",
+      "name_ru": "Tcell",
+      "logo": "/images/clients/tcell.svg",
+      "type": "direct",
+      "visible": true,
+      "order": 6
+    },
+    {
+      "id": "abt-associates",
+      "name_en": "Abt Associates",
+      "name_ru": "Abt Associates",
+      "logo": "/images/clients/abt-associates.svg",
+      "type": "usaid-funded",
+      "visible": true,
+      "order": 7
+    },
+    {
+      "id": "acdivoca",
+      "name_en": "ACDI/VOCA",
+      "name_ru": "ACDI/VOCA",
+      "logo": "/images/clients/acdivoca.svg",
+      "type": "usaid-funded",
+      "visible": true,
+      "order": 8
+    }
+  ],
+  "footnotes": {
+    "usaid_en": "Projects funded by USAID • Government ministries of Tajikistan",
+    "usaid_ru": "Проекты, финансируемые USAID • Министерства Таджикистана"
+  }
+}

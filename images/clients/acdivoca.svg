@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" width="160" height="50" fill="#C2613A">
+  <!-- Leaf/growth icon -->
+  <path d="M14,40 C14,40 10,28 16,18 C22,8 30,12 28,22 C26,32 18,36 14,40Z" fill="#C2613A" opacity="0.2" stroke="#C2613A" stroke-width="1.5"/>
+  <line x1="14" y1="40" x2="22" y2="18" stroke="#C2613A" stroke-width="1.5"/>
+  <!-- Text -->
+  <text x="38" y="28" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#C2613A">ACDI/VOCA</text>
+</svg>
