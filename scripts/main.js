@@ -6,7 +6,7 @@
   'use strict';
 
   // ---- Constants ----
-  const FORM_ENDPOINT = 'PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+  const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxumLXTJHeXgTb56GCOaB_RJ_HrtzWwIuaKYU7xTvewW7TMjgJm0bKd-MIqA0z9RAkR1Q/exec';
 
   // ---- State ----
   let currentLang = 'en';
