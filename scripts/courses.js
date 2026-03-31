@@ -73,6 +73,16 @@
         '</span>';
     }
 
+    // Location
+    var location = '';
+    if (course.location_en || course.location_ru) {
+      location =
+        '<span class="course-card__location">' +
+          '<span class="lang-en">Location: ' + esc(course.location_en) + '</span>' +
+          '<span class="lang-ru">Место: ' + esc(course.location_ru) + '</span>' +
+        '</span>';
+    }
+
     // Price
     var price = '';
     if (course.price) {
@@ -129,7 +139,7 @@
               '<span class="lang-ru">' + esc(course.name_ru) + '</span>' +
             '</h2>' +
             '<div class="course-card__meta">' +
-              statusTag + duration + price +
+              statusTag + duration + location + price +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -234,8 +244,8 @@
             '<span class="lang-ru">' + esc(course.cta_ru) + '</span>' +
           '</a>' +
           '<p class="course-card__cta-note">' +
-            '<span class="lang-en">I\'ll personally respond — not a chatbot</span>' +
-            '<span class="lang-ru">Отвечу лично — не чат-бот</span>' +
+            '<span class="lang-en">Write to me and I\'ll send payment details</span>' +
+            '<span class="lang-ru">Напишите мне, и я пришлю реквизиты</span>' +
           '</p>' +
         '</div>';
     }

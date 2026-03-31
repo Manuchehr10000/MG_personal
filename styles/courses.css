@@ -135,6 +135,11 @@
   color: #6B6B6B;
 }
 
+.course-card__location {
+  font-size: 14px;
+  color: #6B6B6B;
+}
+
 .course-card__price {
   font-family: 'Satoshi', sans-serif;
   font-size: 15px;
