@@ -1,0 +1,440 @@
+/* ========================================
+   LANDING PAGE — Mental Models for AI
+   Design tokens match main site (ghafforzoda.net)
+   ======================================== */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #1A1A1A;
+  background-color: #FAFAF8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Language toggle --- */
+/* Default: Russian visible */
+span.lang-en { display: none; }
+span.lang-ru { display: inline; }
+body.lang-en span.lang-ru { display: none; }
+body.lang-en span.lang-en { display: inline; }
+
+/* --- Container --- */
+.lp-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- Header --- */
+.lp-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(250, 250, 248, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.lp-header .lp-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  max-width: 1200px;
+}
+
+.lp-logo {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1A1A1A;
+  text-decoration: none;
+}
+
+.lp-lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lp-lang__btn {
+  background: none;
+  border: none;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6B6B6B;
+  cursor: pointer;
+  padding: 4px 2px;
+  transition: color 0.2s;
+}
+
+.lp-lang__btn.active {
+  color: #C2613A;
+}
+
+.lp-lang__sep {
+  color: #D0D0D0;
+  font-size: 14px;
+  user-select: none;
+}
+
+
+/* ========================================
+   HERO
+   ======================================== */
+.lp-hero {
+  padding: 120px 0 80px;
+}
+
+.lp-hero__label {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #C2613A;
+  margin-bottom: 20px;
+}
+
+.lp-hero__title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #1A1A1A;
+  margin-bottom: 32px;
+}
+
+.lp-hero__hook {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #1A1A1A;
+  margin-bottom: 16px;
+}
+
+.lp-hero__problem {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #6B6B6B;
+  margin-bottom: 40px;
+}
+
+.lp-hero .lp-cta {
+  margin-top: 0;
+}
+
+
+/* ========================================
+   CTA BUTTON
+   ======================================== */
+.lp-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: #C2613A;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 32px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.lp-cta:hover {
+  background: #A8522F;
+  transform: scale(1.02);
+}
+
+.lp-cta:active {
+  transform: scale(0.98);
+}
+
+.lp-cta__icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.lp-cta--large {
+  font-size: 18px;
+  padding: 18px 40px;
+}
+
+
+/* ========================================
+   PROGRAM (Sessions)
+   ======================================== */
+.lp-program {
+  padding: 80px 0;
+  background: #F5F4F0;
+}
+
+.lp-section__title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1A1A1A;
+  margin-bottom: 16px;
+}
+
+.lp-program__intro {
+  font-size: 18px;
+  color: #6B6B6B;
+  margin-bottom: 48px;
+}
+
+.lp-session {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.lp-session:last-child {
+  margin-bottom: 0;
+}
+
+.lp-session__number {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: #C2613A;
+  opacity: 0.25;
+  flex-shrink: 0;
+  width: 56px;
+}
+
+.lp-session__body {
+  flex: 1;
+}
+
+.lp-session__title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 12px;
+}
+
+.lp-session__text {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #6B6B6B;
+}
+
+
+/* ========================================
+   OUTCOME
+   ======================================== */
+.lp-outcome {
+  padding: 80px 0;
+}
+
+.lp-outcome__card {
+  border-left: 3px solid #C2613A;
+  padding-left: 28px;
+}
+
+.lp-outcome__card .lp-section__title {
+  margin-bottom: 12px;
+}
+
+.lp-outcome__text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #1A1A1A;
+}
+
+
+/* ========================================
+   DETAILS
+   ======================================== */
+.lp-details {
+  padding: 0 0 80px;
+}
+
+.lp-details__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: #E8E6E1;
+  border: 1px solid #E8E6E1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.lp-details__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 24px;
+  background: #FAFAF8;
+}
+
+.lp-details__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6B6B6B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.lp-details__value {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+
+/* ========================================
+   INSTRUCTOR
+   ======================================== */
+.lp-instructor {
+  padding: 0 0 80px;
+}
+
+.lp-instructor__inner {
+  border-top: 1px solid #E8E6E1;
+  padding-top: 32px;
+}
+
+.lp-instructor__text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #6B6B6B;
+}
+
+.lp-instructor__text strong {
+  color: #1A1A1A;
+  font-weight: 600;
+}
+
+
+/* ========================================
+   FINAL CTA
+   ======================================== */
+.lp-final {
+  padding: 80px 0 100px;
+  background: #F5F4F0;
+  text-align: center;
+}
+
+.lp-final__text {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #1A1A1A;
+  margin-bottom: 32px;
+}
+
+.lp-final .lp-cta {
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.lp-footer {
+  padding: 32px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #6B6B6B;
+}
+
+
+/* ========================================
+   REVEAL ANIMATIONS
+   ======================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (min-width: 768px) {
+  .lp-container {
+    padding: 0 40px;
+  }
+
+  .lp-hero {
+    padding: 160px 0 120px;
+  }
+
+  .lp-hero__title {
+    font-size: 56px;
+  }
+
+  .lp-hero__hook {
+    font-size: 22px;
+  }
+
+  .lp-program {
+    padding: 120px 0;
+  }
+
+  .lp-section__title {
+    font-size: 32px;
+  }
+
+  .lp-outcome {
+    padding: 120px 0;
+  }
+
+  .lp-details {
+    padding-bottom: 120px;
+  }
+
+  .lp-instructor {
+    padding-bottom: 120px;
+  }
+
+  .lp-final {
+    padding: 120px 0 140px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lp-hero__title {
+    font-size: 64px;
+  }
+
+  .lp-session__number {
+    font-size: 56px;
+    width: 64px;
+  }
+}

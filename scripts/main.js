@@ -9,7 +9,7 @@
   const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxumLXTJHeXgTb56GCOaB_RJ_HrtzWwIuaKYU7xTvewW7TMjgJm0bKd-MIqA0z9RAkR1Q/exec';
 
   // ---- State ----
-  let currentLang = 'en';
+  let currentLang = 'ru';
 
   // ---- DOM Ready ----
   document.addEventListener('DOMContentLoaded', function () {
@@ -71,10 +71,10 @@
     document.documentElement.lang = lang;
 
     // Toggle body class
-    if (lang === 'ru') {
-      document.body.classList.add('lang-ru');
+    if (lang === 'en') {
+      document.body.classList.add('lang-en');
     } else {
-      document.body.classList.remove('lang-ru');
+      document.body.classList.remove('lang-en');
     }
 
     // Update active button

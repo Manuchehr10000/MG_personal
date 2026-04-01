@@ -45,18 +45,17 @@ button {
 }
 
 /* --- Language Toggle (CSS-driven) --- */
-/* Default: English visible, Russian hidden */
-span.lang-ru { display: none; }
-span.lang-en { display: inline; }
-div.lang-ru, ul.lang-ru, p.lang-ru { display: none; }
-div.lang-en, ul.lang-en, p.lang-en { display: block; }
-ul.lang-en { display: block; }
+/* Default: Russian visible, English hidden */
+span.lang-en { display: none; }
+span.lang-ru { display: inline; }
+div.lang-en, ul.lang-en, p.lang-en { display: none; }
+div.lang-ru, ul.lang-ru, p.lang-ru { display: block; }
 
-/* When body has lang-ru class */
-body.lang-ru span.lang-en { display: none; }
-body.lang-ru span.lang-ru { display: inline; }
-body.lang-ru div.lang-en, body.lang-ru ul.lang-en, body.lang-ru p.lang-en { display: none; }
-body.lang-ru div.lang-ru, body.lang-ru ul.lang-ru, body.lang-ru p.lang-ru { display: block; }
+/* When body has lang-en class */
+body.lang-en span.lang-ru { display: none; }
+body.lang-en span.lang-en { display: inline; }
+body.lang-en div.lang-ru, body.lang-en ul.lang-ru, body.lang-en p.lang-ru { display: none; }
+body.lang-en div.lang-en, body.lang-en ul.lang-en, body.lang-en p.lang-en { display: block; }
 
 /* --- Container --- */
 .container {
