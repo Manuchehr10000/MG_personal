@@ -1,20 +1,25 @@
 ---
-description: Sync the hand-authored MD masters from Notion into the repo (all except BACKEND-Reference.md).
+description: Sync hand-authored MD masters from Notion into the repo, fetching only files whose Notion timestamp changed (all except BACKEND-Reference.md).
 ---
 
-Sync the project's hand-authored Markdown masters from their Notion pages into this repo. For each page below, fetch it via the Notion MCP and write its body to the mapped repo path. Then show me what changed, and commit and push the changed files to `main`.
+Sync the project's hand-authored Markdown masters from Notion into this repo, fetching full content only for files that actually changed. Do NOT git add, commit, or push — I review and commit myself.
 
-Page ID → repo path:
+Mapping (Notion page ID → repo path):
 - 384c62b4be608102806fe0edf8ccb5f1  → CLAUDE.md
 - 384c62b4be608166ae1cc68e1b10dfc2  → PRODUCT.md
 - 384c62b4be6081e19c69fed1a67494c0  → DESIGN.md
 - 384c62b4be60819c82dece414c49e536  → FRONTEND.md
 - 384c62b4be6081d1bc5bc1c90b99bffc  → BACKEND-Patterns.md
 
-Rules:
-- NEVER fetch or write BACKEND-Reference.md. It is code-derived (regenerated from the codebase at ship) and must never be overwritten from Notion.
-- Use the page ID → repo path mapping exactly. Do NOT infer filenames from Notion page titles — the titles differ (e.g. "BACKEND.md — Patterns" maps to BACKEND-Patterns.md).
-- Write each page's body verbatim to its file (not the page title). If the Notion markdown auto-linked a filename like [DESIGN.md](http://DESIGN.md), strip it back to plain DESIGN.md.
-- Per file: if it already matches, report "unchanged"; if different or missing, overwrite/create it and report "updated"/"created".
-- After writing, run git status and git diff on the changed files and summarize per file.
-- Then commit the changed files and push directly to `main` — do not create a new branch (`git checkout main` if not already on it, `git add` only the synced MD files, commit with a clear message, then `git push origin main`). If nothing changed, skip the commit and say so. Never commit BACKEND-Reference.md or any unrelated working-tree changes — stage only the files this sync wrote.
+Manifest: .claude/md-sync.json — a JSON object mapping each repo path to the Notion last-edited timestamp it was last synced from. If it's missing, create it as {} (so the first run syncs everything).
+
+Steps:
+1. Read current timestamps cheaply, WITHOUT bodies: call the Notion search tool scoped under the Agent Instructions page (parent page ID 384c62b4be6081d6b30ceb4bc44e7ed6) with highlights off (max_highlight_length = 0). From the results, read each page's id and last-edited timestamp.
+2. For each of the five mapped IDs, get its current timestamp: use the value from step 1 if present; if the search didn't return that ID (recall miss), fall back to fetching that page directly just to read its timestamp.
+3. A file needs syncing if ANY of: the repo file is missing; it has no manifest entry; or its current Notion timestamp differs from the manifest entry. Otherwise leave it untouched (do NOT fetch its body).
+4. For ONLY the files that need syncing: fetch the full Notion page, write its body verbatim to the mapped repo path (strip Notion auto-links like [DESIGN.md](http://DESIGN.md) back to plain text), and record the new timestamp in the manifest.
+5. NEVER fetch or write BACKEND-Reference.md — it is code-derived (regenerated from the codebase at ship) and must never be overwritten from Notion.
+6. Use the page ID → repo path mapping exactly; do NOT infer filenames from Notion page titles (they differ, e.g. "BACKEND.md — Patterns" → BACKEND-Patterns.md).
+7. Save the updated manifest. Run git status and git diff on the changed files. Stop there — no commit.
+
+Report: which files were synced, which were unchanged (skipped without fetching a body), and any that needed the fallback fetch.
