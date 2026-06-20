@@ -16,6 +16,7 @@
 - React Router. Language is a URL segment: `/:lang/...` with `lang ∈ { en, ru }` (e.g. `/en/consulting`, `/ru/consulting`). The toggle is a real route swap, replacing the current inline-doubling (locked decision 4).
 - Language is a property of content, not global site state (decision 4). UI strings come from per-locale dictionaries (`en`, `ru`); dynamic content (services, courses) carries its own language from the API.
 - Graceful degradation (decision 4): when no EN version of a piece of content exists, fall back to RU and grey/disable the EN toggle for that content. The shell handles single-language content from day one, so phase 2 (RU-only courses) needs no retrofit.
+- Two degradation modes (formalized at 002): a content *item* present in one language only **hides cleanly** (no layout break); a *page/route* absent in a language **falls back** to the available language. One reusable mechanism plus a single translation accessor provide both, so every later shell page (003–008) gets it for free.
 
 ---
 
