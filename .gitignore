@@ -2,3 +2,15 @@
 .DS_Store
 *.HEIC
 .vercel
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+*.db
+
+# Node / Vite
+node_modules/
+frontend/dist/
