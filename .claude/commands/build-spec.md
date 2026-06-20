@@ -16,4 +16,4 @@ Row: $ARGUMENTS
 4. Regenerate BACKEND-Reference.md from the actual codebase (schema, endpoints, models — what exists, not what was planned).
 5. Run git diff on BACKEND-Reference.md and compare against the schema/endpoint changes declared in the tracker row. Output a Schema Delta Report: EXPECTED (declared and present), UNDECLARED (changed but not in the spec — flag each), BREAKING (modified/removed pre-existing schema — flag loudly). BLOCKER if anything touches tables gated by open product decisions.
 6. Run tests. Report Schema Delta Report + test results. STOP. Do not commit, push, or touch Notion.
-7. Only after I reply confirming: commit, git push, then update the row's Status property to "✅ LIVE" via the Notion MCP. Push before flip — a piece is never LIVE unpushed.
+7. Only after I reply confirming: commit and push directly to `main` — do not create a new branch (`git checkout main` if not already on it, commit, then `git push origin main`). Then update the row's Status property to "✅ LIVE" via the Notion MCP. Push before flip — a piece is never LIVE unpushed.
