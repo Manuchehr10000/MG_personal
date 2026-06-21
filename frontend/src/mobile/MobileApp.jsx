@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { pageLanguages } from '../lib/i18n'
 import Footer from '../ui/Footer'
+import About from './About'
 import Header from './Header'
 import Home from './Home'
 import Placeholder from './Placeholder'
@@ -23,10 +24,7 @@ export default function MobileApp({ lang }) {
             path="consulting"
             element={<Placeholder titleKey="consulting" langs={pageLanguages.consulting} />}
           />
-          <Route
-            path="about"
-            element={<Placeholder titleKey="about" langs={pageLanguages.about} />}
-          />
+          <Route path="about" element={<About langs={pageLanguages.about} />} />
           <Route
             path="courses"
             element={<Placeholder titleKey="courses" langs={pageLanguages.courses} />}

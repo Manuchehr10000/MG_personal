@@ -75,6 +75,53 @@ export const dict = {
         cta: 'Get in touch',
       },
     },
+    // About / credentials (005). Real-SHAPED placeholder copy — owner-replaceable
+    // at sync (edit = redeploy, no admin UI). The same content model renders two
+    // ways: mobile = clean proof surface; desktop = the workbook metaphor. Proof
+    // stats + facts are placeholders for the owner to confirm. Logos live in
+    // lib/clients (language-neutral proper nouns), reused from the home strip.
+    about: {
+      eyebrow: 'About',
+      name: 'Manuchehr Ghafforzoda',
+      role: 'Data Analytics & AI Consultant · Trainer',
+      lead: 'I help organisations across the region turn messy data into decisions they can trust.',
+      bio: [
+        'For over seven years I have worked at the intersection of data analytics, forecasting, and applied AI — building the models, dashboards, and data practices that leaders actually use to run their organisations.',
+        'Alongside consulting, I train teams and professionals in the practical craft: Excel, SQL, Python, and the AI tools that compound them. Hundreds of specialists across the region have come through these programmes.',
+      ],
+      // Proof figures (7+ / 800+ / 90% / published) — owner to confirm exact
+      // labels. Rendered from this array, never hardcoded per item.
+      stats: [
+        { value: '7+', label: 'years in data & AI advisory' },
+        { value: '800+', label: 'professionals trained' },
+        { value: '90%', label: 'repeat & referral clients' },
+        { value: 'Published', label: 'author & speaker' },
+      ],
+      // The same proof, tabulated as field/value rows for the desktop data-grid.
+      facts: [
+        { field: 'Focus', value: 'Data analytics · forecasting · applied AI' },
+        { field: 'Experience', value: '7+ years advising teams & leaders' },
+        { field: 'Training', value: '800+ professionals across the region' },
+        { field: 'Based', value: 'Dushanbe, Tajikistan' },
+        { field: 'Languages', value: 'Russian · English · Tajik' },
+      ],
+      clientsTitle: 'Selected clients & partners',
+      closing: {
+        title: 'Want to work together?',
+        body: 'Tell me about the decision you are trying to make — and whether data and AI can help.',
+        cta: 'Get in touch',
+      },
+      // Desktop-only workbook chrome labels (mono). Spreadsheet-flavoured but
+      // bilingual where the token carries meaning.
+      workbook: {
+        sheetName: 'about.xlsx',
+        formulaCell: 'A1',
+        columns: { field: 'FIELD', value: 'VALUE' },
+        statsLabel: 'PROOF',
+        notesLabel: 'NOTES',
+        tabs: ['Profile', 'Clients'],
+      },
+    },
     placeholder: 'Shell scaffold — full content arrives in later build pieces.',
     footer: { rights: 'All rights reserved.' },
     // The toggle names the language you switch TO; `unavailable` is shown when the
@@ -140,6 +187,43 @@ export const dict = {
         title: 'Есть задача, которую стоит решить?',
         body: 'Расскажите, что хотите понять, — и я скажу, может ли анализ данных и ИИ помочь и как именно.',
         cta: 'Связаться',
+      },
+    },
+    about: {
+      eyebrow: 'Обо мне',
+      name: 'Манучехр Гаффорзода',
+      role: 'Консультант по аналитике данных и ИИ · Тренер',
+      lead: 'Помогаю организациям региона превращать разрозненные данные в решения, которым можно доверять.',
+      bio: [
+        'Более семи лет работаю на стыке аналитики данных, прогнозирования и прикладного ИИ — выстраиваю модели, дашборды и практики работы с данными, которые руководители действительно используют в управлении.',
+        'Помимо консалтинга обучаю команды и специалистов практическому ремеслу: Excel, SQL, Python и инструментам ИИ, которые их усиливают. Через эти программы прошли сотни специалистов по всему региону.',
+      ],
+      stats: [
+        { value: '7+', label: 'лет в консалтинге по данным и ИИ' },
+        { value: '800+', label: 'обученных специалистов' },
+        { value: '90%', label: 'повторных обращений и рекомендаций' },
+        { value: 'Публикации', label: 'автор и спикер' },
+      ],
+      facts: [
+        { field: 'Направление', value: 'Аналитика данных · прогнозы · прикладной ИИ' },
+        { field: 'Опыт', value: '7+ лет работы с командами и руководителями' },
+        { field: 'Обучение', value: '800+ специалистов по региону' },
+        { field: 'Город', value: 'Душанбе, Таджикистан' },
+        { field: 'Языки', value: 'Русский · английский · таджикский' },
+      ],
+      clientsTitle: 'Избранные клиенты и партнёры',
+      closing: {
+        title: 'Хотите поработать вместе?',
+        body: 'Расскажите, какое решение вам нужно принять, — и можно ли помочь с помощью данных и ИИ.',
+        cta: 'Связаться',
+      },
+      workbook: {
+        sheetName: 'about.xlsx',
+        formulaCell: 'A1',
+        columns: { field: 'ПОЛЕ', value: 'ЗНАЧЕНИЕ' },
+        statsLabel: 'ПОКАЗАТЕЛИ',
+        notesLabel: 'ЗАМЕТКИ',
+        tabs: ['Профиль', 'Клиенты'],
       },
     },
     placeholder: 'Каркас оболочки — наполнение появится в следующих частях сборки.',

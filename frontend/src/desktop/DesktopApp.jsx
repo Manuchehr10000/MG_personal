@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { pageLanguages, useLang } from '../lib/i18n'
 import Footer from '../ui/Footer'
+import DesktopAbout from './DesktopAbout'
 import DesktopHome from './DesktopHome'
 import DesktopNav from './DesktopNav'
 import DesktopPlaceholder from './DesktopPlaceholder'
@@ -23,10 +24,7 @@ export default function DesktopApp() {
             path="consulting"
             element={<DesktopPlaceholder titleKey="consulting" langs={pageLanguages.consulting} />}
           />
-          <Route
-            path="about"
-            element={<DesktopPlaceholder titleKey="about" langs={pageLanguages.about} />}
-          />
+          <Route path="about" element={<DesktopAbout langs={pageLanguages.about} />} />
           <Route
             path="courses"
             element={<DesktopPlaceholder titleKey="courses" langs={pageLanguages.courses} />}

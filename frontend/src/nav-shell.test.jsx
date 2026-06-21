@@ -58,7 +58,8 @@ describe('nav + layout shell (003) — mobile', () => {
   it('every shell destination route resolves (no dead links)', async () => {
     setWidth(375)
     for (const [path, heading] of [
-      ['/en/about', 'About'],
+      // about is real content as of 005 — its h1 is the name, not the nav label.
+      ['/en/about', 'Manuchehr Ghafforzoda'],
       ['/en/pricing', 'Pricing'],
       ['/en/consulting', 'Consulting'],
       ['/en/contact', 'Contact'],

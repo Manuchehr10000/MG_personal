@@ -58,6 +58,14 @@ export default {
         subhead: ['24px', { lineHeight: '1.15' }],
         heading: ['38px', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
         display: ['46px', { lineHeight: '1.0', letterSpacing: '-0.03em' }],
+        // Desktop workbook dense mono scale (DESIGN.md desktop-only addendum) —
+        // 10-13px, deliberately OUTSIDE the six-step shared scale, for grid / cell
+        // / formula text only. Concrete values pinned within the addendum's 10-13px
+        // range; never used on mobile or on non-workbook surfaces.
+        'wb-xs': ['10px', { lineHeight: '1.3' }],
+        'wb-sm': ['11px', { lineHeight: '1.35' }],
+        wb: ['12px', { lineHeight: '1.4' }],
+        'wb-lg': ['13px', { lineHeight: '1.4' }],
       },
       // Three weights only — 400 / 600 / 900.
       fontWeight: {
@@ -75,6 +83,12 @@ export default {
       // workbook's expressive drop shadows are a later piece, not 003.
       boxShadow: {
         rule: 'inset 4px 0 0 0 #C2613A',
+        // The ONE named expressive-elevation exception (DESIGN.md desktop-only
+        // addendum): a deep soft drop on the workbook's floating panels ONLY.
+        // Pinned within the addendum's 0 30-50px 80-110px rgba(0,0,0,0.4-0.7)
+        // range. Flat elevation (borders/surface steps) still governs everywhere
+        // else — do not apply this off the desktop workbook.
+        workbook: '0 40px 90px rgba(0, 0, 0, 0.5)',
       },
       // Subtle, flat-consistent reveal-on-scroll. Applied only when an element
       // scrolls into view AND prefers-reduced-motion is not set (see ui/Reveal).
