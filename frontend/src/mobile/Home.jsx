@@ -1,10 +1,21 @@
-import { getDict } from '../lib/i18n'
+import { localize } from '../lib/content'
+import { useTranslation } from '../lib/i18n'
+import { LangLink } from '../ui/LangLink'
 
 // Placeholder home — the F1 conversion path's landing surface. Marketing copy
 // and the real offer model arrive in later pieces (004+). Plain-language CTA,
 // flat, terracotta accent.
-export default function Home({ lang }) {
-  const t = getDict(lang)
+export default function Home() {
+  const { lang, t } = useTranslation()
+
+  // Framework demo (scaffold, not page content): a content item that declares it
+  // exists only in RU. Item-level degradation hides it cleanly in EN — no layout
+  // break, nothing greyed. This is the item-level mode of the reusable mechanism.
+  const ruOnlyDemo = {
+    ru: 'Демонстрация фреймворка i18n: этот блок существует только на русском и в EN скрывается без сдвига вёрстки.',
+  }
+  const note = localize(ruOnlyDemo, lang) // no fallback -> null in EN
+
   return (
     <section className="px-5 py-10">
       <img
@@ -19,14 +30,23 @@ export default function Home({ lang }) {
       <p className="mt-2 text-lead font-semibold text-accent-primary">{t.hero.title}</p>
       <p className="mt-4 text-body text-ink-secondary">{t.hero.tagline}</p>
 
-      <a
-        href={`/${lang}/contact`}
+      <LangLink
+        to="contact"
         className="mt-8 inline-flex h-12 items-center rounded-sm bg-accent-primary px-6 font-semibold text-ink-on-dark active:bg-accent-pressed"
       >
         {t.hero.cta}
-      </a>
+      </LangLink>
 
       <p className="mt-10 text-caption text-ink-faint">{t.placeholder}</p>
+
+      {note.value && (
+        <p
+          data-testid="ru-only-item"
+          className="mt-4 border-l-4 border-accent-primary pl-3 text-caption text-ink-muted"
+        >
+          {note.value}
+        </p>
+      )}
     </section>
   )
 }

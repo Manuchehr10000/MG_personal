@@ -1,8 +1,9 @@
-import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vitest/config'
 
 // SPA built to static assets, served by FastAPI in prod. The dev proxy forwards
 // /api and /health to the FastAPI dev server so the SPA talks to the real API.
+// Vitest runs the framework's unit + component tests under jsdom.
 export default defineConfig({
   plugins: [react()],
   server: {
@@ -14,5 +15,10 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/test/setup.js',
   },
 })

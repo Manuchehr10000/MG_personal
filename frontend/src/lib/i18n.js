@@ -1,7 +1,11 @@
-// UI-string dictionaries. Language is a property of content, not global state
-// (decision 4): the toggle is a route swap (/:lang/...). Dynamic content carries
-// its own language from the API and degrades gracefully when one locale is
-// missing — handled per-content, not here.
+// Per-content i18n framework (002). Language is a property of content, not global
+// state (decision 4): the toggle is a route swap (/:lang/...). This module owns
+// the UI-string dictionaries plus the reusable accessors every later shell page
+// (003-008) consumes: useLang / useTranslation read the active language off the
+// route, so pages don't thread a `lang` prop. Dynamic content carries its own
+// language and degrades per-content via lib/content.js + lib/languageAvailability.
+
+import { useParams } from 'react-router-dom'
 
 export const LANGS = ['en', 'ru']
 // Audience is Tajikistan / CIS; the shell defaults to Russian.
@@ -26,7 +30,11 @@ export const dict = {
     },
     placeholder: 'Shell scaffold — full content arrives in later build pieces.',
     footer: { rights: 'All rights reserved.' },
-    toggle: { other: 'RU', label: 'Switch to Russian' },
+    // The toggle names the language you switch TO; `unavailable` is shown when the
+    // current content has no other-language version (greyed, no dead route).
+    toggle: { other: 'RU', label: 'Switch to Russian', unavailable: 'Not available in Russian' },
+    // Shown when a route exists only in the other language and falls back to it.
+    degraded: { fallbackNotice: 'Available in Russian only — showing the Russian version.' },
   },
   ru: {
     htmlLang: 'ru',
@@ -46,8 +54,24 @@ export const dict = {
     },
     placeholder: 'Каркас оболочки — наполнение появится в следующих частях сборки.',
     footer: { rights: 'Все права защищены.' },
-    toggle: { other: 'EN', label: 'Переключить на английский' },
+    toggle: { other: 'EN', label: 'Переключить на английский', unavailable: 'Недоступно на английском' },
+    degraded: { fallbackNotice: 'Доступно только на английском — показана английская версия.' },
   },
+}
+
+// Language availability per shell route. The shell is bilingual except where the
+// product policy is single-language: PRODUCT.md fixes course/LMS content as
+// RU-only "for the foreseeable future" and requires the shell to handle that from
+// day one (toggle greys, EN falls back to RU) so phase 2 needs no retrofit. This
+// declares that documented policy on the existing courses placeholder — it adds
+// no course content (that is a later piece); it only states which languages the
+// route exists in so the framework can demonstrate both degradation modes.
+export const pageLanguages = {
+  '': LANGS,
+  consulting: LANGS,
+  about: LANGS,
+  courses: ['ru'],
+  contact: LANGS,
 }
 
 export function isLang(value) {
@@ -56,4 +80,22 @@ export function isLang(value) {
 
 export function getDict(lang) {
   return dict[isLang(lang) ? lang : DEFAULT_LANG]
+}
+
+// The other language in the two-language system (for the toggle target).
+export function otherLang(lang) {
+  return LANGS.find((l) => l !== lang) ?? DEFAULT_LANG
+}
+
+// Translation accessors — the reusable shape 003-008 consume. They read the
+// active language off the :lang route segment, falling back to the default for an
+// unknown/missing segment (App redirects those, so this is a belt-and-braces).
+export function useLang() {
+  const { lang } = useParams()
+  return isLang(lang) ? lang : DEFAULT_LANG
+}
+
+export function useTranslation() {
+  const lang = useLang()
+  return { lang, t: dict[lang], dict, otherLang: otherLang(lang), langs: LANGS }
 }

@@ -1,17 +1,20 @@
-import { Link } from 'react-router-dom'
-
-import { getDict } from '../lib/i18n'
+import { useTranslation } from '../lib/i18n'
+import { LangLink } from '../ui/LangLink'
 import LanguageToggle from '../ui/LanguageToggle'
 
 // Flat top bar: wordmark + language toggle. Borders, not shadows (DESIGN.md).
-export default function Header({ lang }) {
-  const t = getDict(lang)
+// The wordmark is a language-aware link home; the toggle is shared below the fork.
+export default function Header() {
+  const { t } = useTranslation()
   return (
     <header className="sticky top-0 z-10 flex h-14 items-center justify-between border-b border-default bg-surface-0 px-4">
-      <Link to={`/${lang}`} className="font-display text-lead font-semibold tracking-tight text-ink-primary">
+      <LangLink
+        to=""
+        className="font-display text-lead font-semibold tracking-tight text-ink-primary"
+      >
         {t.brand}
-      </Link>
-      <LanguageToggle lang={lang} />
+      </LangLink>
+      <LanguageToggle />
     </header>
   )
 }

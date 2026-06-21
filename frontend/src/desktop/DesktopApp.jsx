@@ -1,15 +1,16 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
-import { getDict } from '../lib/i18n'
+import { useTranslation } from '../lib/i18n'
+import { LangLink } from '../ui/LangLink'
 import LanguageToggle from '../ui/LanguageToggle'
 
 // Desktop workbook tree — lazy-loaded so this code never ships in the mobile
 // bundle. F1 sets up the fork and a thin shell only; the spreadsheet/workbook
 // metaphor and its components are later pieces. JetBrains Mono is loaded here
-// (desktop-only) so mobile never fetches it (DESIGN.md).
-export default function DesktopApp({ lang }) {
-  const t = getDict(lang)
+// (desktop-only) so mobile never fetches it (DESIGN.md). The language framework
+// (toggle, language-aware links) is shared below the fork.
+export default function DesktopApp() {
+  const { t } = useTranslation()
 
   useEffect(() => {
     const id = 'jetbrains-mono-font'
@@ -25,10 +26,10 @@ export default function DesktopApp({ lang }) {
   return (
     <div className="min-h-dvh bg-surface-1">
       <header className="flex h-14 items-center justify-between border-b border-default bg-surface-0 px-8">
-        <Link to={`/${lang}`} className="font-display text-lead font-semibold text-ink-primary">
+        <LangLink to="" className="font-display text-lead font-semibold text-ink-primary">
           {t.brand}
-        </Link>
-        <LanguageToggle lang={lang} />
+        </LangLink>
+        <LanguageToggle />
       </header>
       <main className="mx-auto max-w-5xl px-8 py-16">
         <h1 className="font-display text-display font-black tracking-tight text-ink-primary">
