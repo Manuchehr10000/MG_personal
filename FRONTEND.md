@@ -31,7 +31,7 @@
 ## Mobile presentation rules (locked decision 11)
 
 - Clean, native-feeling, touch-first, Android-friendly. NOT an iOS imitation: no SF-only fonts, no liquid-glass blur, no fake device chrome.
-- Native bottom tab bar: ≤5 fixed items, ≥48px touch targets.
+- Native bottom tab bar: ≤5 fixed items, ≥48px touch targets. When destinations exceed the tab budget (the shell has six — Home, About, Consulting, Courses, Pricing, Contact), use ~4 primary tabs + a More overflow entry, never a hamburger/drawer (settled at 003).
 - Plain-language CTAs ("Request a quote") — no metaphor.
 - Flat per DESIGN.md (borders, not shadows).
 
