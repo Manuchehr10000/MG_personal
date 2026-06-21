@@ -5,6 +5,7 @@ import ComingSoon from '../ui/ComingSoon'
 import Footer from '../ui/Footer'
 import DesktopAbout from './DesktopAbout'
 import DesktopConsulting from './DesktopConsulting'
+import DesktopContact from './DesktopContact'
 import DesktopHome from './DesktopHome'
 import DesktopNav from './DesktopNav'
 import DesktopPlaceholder from './DesktopPlaceholder'
@@ -33,10 +34,7 @@ export default function DesktopApp() {
             element={<DesktopPlaceholder titleKey="courses" langs={pageLanguages.courses} />}
           />
           <Route path="pricing" element={<DesktopPricing langs={pageLanguages.pricing} />} />
-          <Route
-            path="contact"
-            element={<DesktopPlaceholder titleKey="contact" langs={pageLanguages.contact} />}
-          />
+          <Route path="contact" element={<DesktopContact langs={pageLanguages.contact} />} />
           {/* Standalone diagnostic coming-soon (009) — footer-reachable, not in nav. */}
           <Route
             path="diagnostic"

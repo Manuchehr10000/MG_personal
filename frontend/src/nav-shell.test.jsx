@@ -58,12 +58,12 @@ describe('nav + layout shell (003) — mobile', () => {
   it('every shell destination route resolves (no dead links)', async () => {
     setWidth(375)
     for (const [path, heading] of [
-      // about (005) + consulting (006) + pricing (007) are real content — their h1
-      // is the page title, not the nav label. contact stays a placeholder.
+      // about (005) + consulting (006) + pricing (007) + contact (008) are real
+      // content — their h1 is the page title, not the nav label.
       ['/en/about', 'Manuchehr Ghafforzoda'],
       ['/en/pricing', 'Courses & pricing'],
       ['/en/consulting', 'Consulting that moves the numbers'],
-      ['/en/contact', 'Contact'],
+      ['/en/contact', 'Get in touch'],
     ]) {
       const { unmount } = renderAt(path)
       expect(await screen.findByRole('heading', { name: heading })).toBeInTheDocument()

@@ -10,7 +10,8 @@ from app.core.config import settings
 from app.core.db import Base
 
 # Import domain models here as they are added so their tables register on
-# Base.metadata for autogenerate. None at 001 (no business tables).
+# Base.metadata for autogenerate. First business table: contact submissions (008).
+from app.contact.models import Submission  # noqa: E402,F401
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.database_url)

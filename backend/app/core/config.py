@@ -18,5 +18,14 @@ class Settings(BaseSettings):
 
     environment: str = "dev"
 
+    # Owner-notification email gateway (008). Provider-agnostic transactional-email
+    # API reached via httpx; the concrete provider is a deploy decision. All blank
+    # by default → the gateway raises "not configured" and the route stores the
+    # submission anyway (store-and-forward). Secrets never in code (principle 10).
+    email_api_base_url: str = ""
+    email_api_key: str = ""
+    email_from: str = ""
+    email_owner_to: str = ""
+
 
 settings = Settings()

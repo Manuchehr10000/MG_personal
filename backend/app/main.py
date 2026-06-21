@@ -13,8 +13,12 @@ from fastapi.staticfiles import StaticFiles
 
 from app.api.router import api_router
 from app.core.config import settings
+from app.core.errors import register_error_handlers
 
 app = FastAPI(title="ghafforzoda.net")
+
+# API speaks the §3.5 error envelope (e.g. contact-form validation -> {error}).
+register_error_handlers(app)
 
 
 @app.get("/health")

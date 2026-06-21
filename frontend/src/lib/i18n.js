@@ -200,6 +200,34 @@ export const dict = {
         tabs: ['Courses', 'Enrol'],
       },
     },
+    // Contact / quote form (008 — F1 conversion endpoint). Posts to /api/contact
+    // (store-and-forward). Type prefills from the referring CTA (?type=quote).
+    // Real-shaped placeholder copy, owner-replaceable.
+    contact: {
+      eyebrow: 'Contact',
+      title: 'Get in touch',
+      lead: 'Tell me about the problem you are trying to solve or the training your team needs — I read every message myself and reply personally.',
+      sheetName: 'contact.xlsx',
+      typeLabel: 'What is this about?',
+      types: {
+        quote: 'Request a quote',
+        corporate: 'Corporate training',
+        general: 'General enquiry',
+      },
+      fields: {
+        name: 'Name',
+        email: 'Email',
+        company: 'Company (optional)',
+        phone: 'Phone (optional)',
+        message: 'Message',
+      },
+      submit: 'Send message',
+      submitting: 'Sending…',
+      success: 'Thanks — your message is in. I’ll get back to you soon.',
+      error: 'Something went wrong sending your message. Please try again in a moment.',
+      required: 'Please fill in your name, email, and message.',
+      invalidEmail: 'Please enter a valid email address.',
+    },
     placeholder: 'Shell scaffold — full content arrives in later build pieces.',
     // Diagnostic coming-soon (009). A STANDALONE route — not in DESTINATIONS / the
     // tab bar / scroll-nav — reached by a footer link or a direct post-meeting link
@@ -383,6 +411,31 @@ export const dict = {
         columns: { course: 'КУРС', includes: 'ЧТО ВНУТРИ', price: 'ЦЕНА' },
         tabs: ['Курсы', 'Запись'],
       },
+    },
+    contact: {
+      eyebrow: 'Контакт',
+      title: 'Связаться',
+      lead: 'Расскажите о задаче, которую нужно решить, или об обучении для вашей команды — я читаю каждое сообщение сам и отвечаю лично.',
+      sheetName: 'contact.xlsx',
+      typeLabel: 'С чем связан вопрос?',
+      types: {
+        quote: 'Запросить расчёт',
+        corporate: 'Корпоративное обучение',
+        general: 'Общий вопрос',
+      },
+      fields: {
+        name: 'Имя',
+        email: 'Эл. почта',
+        company: 'Компания (необязательно)',
+        phone: 'Телефон (необязательно)',
+        message: 'Сообщение',
+      },
+      submit: 'Отправить',
+      submitting: 'Отправка…',
+      success: 'Спасибо — сообщение получено. Я скоро свяжусь с вами.',
+      error: 'Не удалось отправить сообщение. Попробуйте ещё раз через минуту.',
+      required: 'Заполните имя, эл. почту и сообщение.',
+      invalidEmail: 'Введите корректный адрес эл. почты.',
     },
     placeholder: 'Каркас оболочки — наполнение появится в следующих частях сборки.',
     diagnostic: {

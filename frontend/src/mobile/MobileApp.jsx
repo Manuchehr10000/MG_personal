@@ -5,6 +5,7 @@ import ComingSoon from '../ui/ComingSoon'
 import Footer from '../ui/Footer'
 import About from './About'
 import Consulting from './Consulting'
+import Contact from './Contact'
 import Header from './Header'
 import Home from './Home'
 import Placeholder from './Placeholder'
@@ -30,10 +31,7 @@ export default function MobileApp({ lang }) {
             element={<Placeholder titleKey="courses" langs={pageLanguages.courses} />}
           />
           <Route path="pricing" element={<Pricing langs={pageLanguages.pricing} />} />
-          <Route
-            path="contact"
-            element={<Placeholder titleKey="contact" langs={pageLanguages.contact} />}
-          />
+          <Route path="contact" element={<Contact langs={pageLanguages.contact} />} />
           {/* Standalone diagnostic coming-soon (009) — footer-reachable, not a tab. */}
           <Route
             path="diagnostic"
