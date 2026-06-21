@@ -8,6 +8,7 @@ import DesktopConsulting from './DesktopConsulting'
 import DesktopHome from './DesktopHome'
 import DesktopNav from './DesktopNav'
 import DesktopPlaceholder from './DesktopPlaceholder'
+import DesktopPricing from './DesktopPricing'
 
 // Desktop presentation tree — lazy-loaded so this code never ships in the mobile
 // bundle (decision 11). 003 builds the clean desktop layout chrome: sticky
@@ -31,10 +32,7 @@ export default function DesktopApp() {
             path="courses"
             element={<DesktopPlaceholder titleKey="courses" langs={pageLanguages.courses} />}
           />
-          <Route
-            path="pricing"
-            element={<DesktopPlaceholder titleKey="pricing" langs={pageLanguages.pricing} />}
-          />
+          <Route path="pricing" element={<DesktopPricing langs={pageLanguages.pricing} />} />
           <Route
             path="contact"
             element={<DesktopPlaceholder titleKey="contact" langs={pageLanguages.contact} />}

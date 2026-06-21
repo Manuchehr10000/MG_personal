@@ -159,6 +159,47 @@ export const dict = {
         tabs: ['Services', 'Engage'],
       },
     },
+    // Pricing (007). FIXED-price courses (decision 14, unlike consulting's quote
+    // path). Dedicated page, bilingual shell marketing even though LMS delivery is
+    // RU-only. Phase-1 CTA → /contact (enquiry); no checkout (phase 2). Prices are
+    // real-shaped placeholder data — the owner confirms the course list + figures.
+    pricing: {
+      eyebrow: 'Pricing',
+      title: 'Courses & pricing',
+      lead: 'Practical, project-based courses in data analytics and applied AI — fixed prices, no surprises. Each one is built from real consulting work.',
+      courses: [
+        {
+          name: 'Excel for Analysts',
+          includes: 'Spreadsheet modelling, pivot tables, and dashboards — hands-on with real datasets.',
+          fixedPrice: '900 TJS',
+        },
+        {
+          name: 'SQL for Data Analysis',
+          includes: 'Querying, joins, aggregation, and window functions on production-style data.',
+          fixedPrice: '1,200 TJS',
+        },
+        {
+          name: 'Python for Data Analytics',
+          includes: 'pandas, data cleaning, analysis, and visualisation — from notebook to insight.',
+          fixedPrice: '1,800 TJS',
+        },
+        {
+          name: 'Applied AI for Professionals',
+          includes: 'Practical AI tools in the daily workflow — prompting, automation, and judgement.',
+          fixedPrice: '1,500 TJS',
+        },
+      ],
+      closing:
+        'Group and corporate rates are available — tell me your team and goals and I’ll recommend the right track.',
+      ctaTitle: 'Ready to start?',
+      cta: 'Get in touch',
+      workbook: {
+        sheetName: 'pricing.xlsx',
+        formulaCell: 'A1',
+        columns: { course: 'COURSE', includes: 'INCLUDES', price: 'PRICE' },
+        tabs: ['Courses', 'Enrol'],
+      },
+    },
     placeholder: 'Shell scaffold — full content arrives in later build pieces.',
     // Diagnostic coming-soon (009). A STANDALONE route — not in DESTINATIONS / the
     // tab bar / scroll-nav — reached by a footer link or a direct post-meeting link
@@ -304,6 +345,43 @@ export const dict = {
         formulaCell: 'A1',
         columns: { service: 'УСЛУГА', detail: 'ЧТО ВЫ ПОЛУЧИТЕ' },
         tabs: ['Услуги', 'Контакт'],
+      },
+    },
+    pricing: {
+      eyebrow: 'Цены',
+      title: 'Курсы и цены',
+      lead: 'Практические курсы по аналитике данных и прикладному ИИ на реальных проектах — фиксированные цены, без сюрпризов. Каждый построен на реальной консалтинговой работе.',
+      courses: [
+        {
+          name: 'Excel для аналитиков',
+          includes: 'Модели в таблицах, сводные таблицы и дашборды — практика на реальных данных.',
+          fixedPrice: '900 сомони',
+        },
+        {
+          name: 'SQL для анализа данных',
+          includes: 'Запросы, соединения, агрегации и оконные функции на боевых данных.',
+          fixedPrice: '1 200 сомони',
+        },
+        {
+          name: 'Python для аналитики данных',
+          includes: 'pandas, очистка данных, анализ и визуализация — от ноутбука до вывода.',
+          fixedPrice: '1 800 сомони',
+        },
+        {
+          name: 'Прикладной ИИ для специалистов',
+          includes: 'Практичные инструменты ИИ в ежедневной работе — промптинг, автоматизация и здравый смысл.',
+          fixedPrice: '1 500 сомони',
+        },
+      ],
+      closing:
+        'Доступны групповые и корпоративные тарифы — расскажите о команде и целях, и я подскажу подходящий формат.',
+      ctaTitle: 'Готовы начать?',
+      cta: 'Связаться',
+      workbook: {
+        sheetName: 'pricing.xlsx',
+        formulaCell: 'A1',
+        columns: { course: 'КУРС', includes: 'ЧТО ВНУТРИ', price: 'ЦЕНА' },
+        tabs: ['Курсы', 'Запись'],
       },
     },
     placeholder: 'Каркас оболочки — наполнение появится в следующих частях сборки.',

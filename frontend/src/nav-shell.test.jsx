@@ -58,10 +58,10 @@ describe('nav + layout shell (003) — mobile', () => {
   it('every shell destination route resolves (no dead links)', async () => {
     setWidth(375)
     for (const [path, heading] of [
-      // about (005) + consulting (006) are real content — their h1 is the page
-      // title, not the nav label. pricing/contact stay placeholders.
+      // about (005) + consulting (006) + pricing (007) are real content — their h1
+      // is the page title, not the nav label. contact stays a placeholder.
       ['/en/about', 'Manuchehr Ghafforzoda'],
-      ['/en/pricing', 'Pricing'],
+      ['/en/pricing', 'Courses & pricing'],
       ['/en/consulting', 'Consulting that moves the numbers'],
       ['/en/contact', 'Contact'],
     ]) {

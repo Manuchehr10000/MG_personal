@@ -8,6 +8,7 @@ import Consulting from './Consulting'
 import Header from './Header'
 import Home from './Home'
 import Placeholder from './Placeholder'
+import Pricing from './Pricing'
 import TabBar from './TabBar'
 
 // Mobile presentation tree — the primary, touch-first experience. Layout chrome
@@ -28,10 +29,7 @@ export default function MobileApp({ lang }) {
             path="courses"
             element={<Placeholder titleKey="courses" langs={pageLanguages.courses} />}
           />
-          <Route
-            path="pricing"
-            element={<Placeholder titleKey="pricing" langs={pageLanguages.pricing} />}
-          />
+          <Route path="pricing" element={<Pricing langs={pageLanguages.pricing} />} />
           <Route
             path="contact"
             element={<Placeholder titleKey="contact" langs={pageLanguages.contact} />}
