@@ -58,10 +58,11 @@ describe('nav + layout shell (003) — mobile', () => {
   it('every shell destination route resolves (no dead links)', async () => {
     setWidth(375)
     for (const [path, heading] of [
-      // about is real content as of 005 — its h1 is the name, not the nav label.
+      // about (005) + consulting (006) are real content — their h1 is the page
+      // title, not the nav label. pricing/contact stay placeholders.
       ['/en/about', 'Manuchehr Ghafforzoda'],
       ['/en/pricing', 'Pricing'],
-      ['/en/consulting', 'Consulting'],
+      ['/en/consulting', 'Consulting that moves the numbers'],
       ['/en/contact', 'Contact'],
     ]) {
       const { unmount } = renderAt(path)

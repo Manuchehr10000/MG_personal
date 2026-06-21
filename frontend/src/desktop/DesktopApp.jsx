@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { pageLanguages, useLang } from '../lib/i18n'
 import Footer from '../ui/Footer'
 import DesktopAbout from './DesktopAbout'
+import DesktopConsulting from './DesktopConsulting'
 import DesktopHome from './DesktopHome'
 import DesktopNav from './DesktopNav'
 import DesktopPlaceholder from './DesktopPlaceholder'
@@ -22,7 +23,7 @@ export default function DesktopApp() {
           <Route index element={<DesktopHome />} />
           <Route
             path="consulting"
-            element={<DesktopPlaceholder titleKey="consulting" langs={pageLanguages.consulting} />}
+            element={<DesktopConsulting langs={pageLanguages.consulting} />}
           />
           <Route path="about" element={<DesktopAbout langs={pageLanguages.about} />} />
           <Route

@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { pageLanguages } from '../lib/i18n'
 import Footer from '../ui/Footer'
 import About from './About'
+import Consulting from './Consulting'
 import Header from './Header'
 import Home from './Home'
 import Placeholder from './Placeholder'
@@ -20,10 +21,7 @@ export default function MobileApp({ lang }) {
       <main className="flex-1">
         <Routes>
           <Route index element={<Home />} />
-          <Route
-            path="consulting"
-            element={<Placeholder titleKey="consulting" langs={pageLanguages.consulting} />}
-          />
+          <Route path="consulting" element={<Consulting langs={pageLanguages.consulting} />} />
           <Route path="about" element={<About langs={pageLanguages.about} />} />
           <Route
             path="courses"

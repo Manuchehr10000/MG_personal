@@ -122,6 +122,43 @@ export const dict = {
         tabs: ['Profile', 'Clients'],
       },
     },
+    // Consulting services (006). Quote path only — NO published prices (decision
+    // 14: consulting price IS NULL → request a quote). Same content model, two
+    // presentations: mobile clean / desktop adopts the 005 workbook layer. Real-
+    // shaped placeholder copy, owner-replaceable.
+    consulting: {
+      eyebrow: 'Consulting',
+      title: 'Consulting that moves the numbers',
+      lead: 'Hands-on data and AI advisory for leaders and teams — scoped to the decision you are trying to make, never sold as an off-the-shelf package.',
+      services: [
+        {
+          title: 'Data strategy & architecture',
+          body: 'We map where your data lives, fix the foundations, and set a roadmap — so analysis rests on something solid instead of a tangle of spreadsheets.',
+        },
+        {
+          title: 'Analytics & dashboards',
+          body: 'Raw data becomes the dashboards and reports your team actually uses to run the business — the numbers that matter, refreshed and trusted.',
+        },
+        {
+          title: 'Forecasting & modelling',
+          body: 'Predictive models for demand, revenue, and risk — built around how your business really works and validated against what actually happens.',
+        },
+        {
+          title: 'Applied AI & readiness',
+          body: 'Find where AI genuinely earns its keep, prepare your data and people for it, and put practical tools into the workflow — no hype, measurable impact.',
+        },
+      ],
+      closing:
+        'Every engagement is scoped to your problem and quoted on request — tell me what you are trying to figure out.',
+      ctaTitle: 'Have a problem worth solving?',
+      cta: 'Request a quote',
+      workbook: {
+        sheetName: 'consulting.xlsx',
+        formulaCell: 'A1',
+        columns: { service: 'SERVICE', detail: 'WHAT YOU GET' },
+        tabs: ['Services', 'Engage'],
+      },
+    },
     placeholder: 'Shell scaffold — full content arrives in later build pieces.',
     footer: { rights: 'All rights reserved.' },
     // The toggle names the language you switch TO; `unavailable` is shown when the
@@ -224,6 +261,39 @@ export const dict = {
         statsLabel: 'ПОКАЗАТЕЛИ',
         notesLabel: 'ЗАМЕТКИ',
         tabs: ['Профиль', 'Клиенты'],
+      },
+    },
+    consulting: {
+      eyebrow: 'Консалтинг',
+      title: 'Консалтинг, который влияет на цифры',
+      lead: 'Практическое сопровождение по данным и ИИ для руководителей и команд — под конкретную задачу, а не готовым пакетом.',
+      services: [
+        {
+          title: 'Стратегия и архитектура данных',
+          body: 'Разбираемся, где живут ваши данные, наводим порядок в основе и строим дорожную карту — чтобы анализ опирался на надёжный фундамент, а не на хаос таблиц.',
+        },
+        {
+          title: 'Аналитика и дашборды',
+          body: 'Сырые данные превращаются в дашборды и отчёты, которыми команда действительно пользуется в управлении, — значимые показатели, обновляемые и проверенные.',
+        },
+        {
+          title: 'Прогнозирование и моделирование',
+          body: 'Прогнозные модели для спроса, выручки и рисков — под реальные процессы вашего бизнеса и проверенные на фактических данных.',
+        },
+        {
+          title: 'Прикладной ИИ и готовность к нему',
+          body: 'Находим, где ИИ действительно приносит пользу, готовим данные и людей и встраиваем практичные инструменты в рабочие процессы — без хайпа, с измеримым результатом.',
+        },
+      ],
+      closing:
+        'Каждый проект оценивается под задачу, расчёт — по запросу. Расскажите, что хотите решить.',
+      ctaTitle: 'Есть задача, которую стоит решить?',
+      cta: 'Запросить расчёт',
+      workbook: {
+        sheetName: 'consulting.xlsx',
+        formulaCell: 'A1',
+        columns: { service: 'УСЛУГА', detail: 'ЧТО ВЫ ПОЛУЧИТЕ' },
+        tabs: ['Услуги', 'Контакт'],
       },
     },
     placeholder: 'Каркас оболочки — наполнение появится в следующих частях сборки.',
