@@ -20,7 +20,9 @@ export const dict = {
       consulting: 'Consulting',
       about: 'About',
       courses: 'Courses',
+      pricing: 'Pricing',
       contact: 'Contact',
+      more: 'More',
     },
     hero: {
       title: 'Data Analytics & AI Consulting',
@@ -44,7 +46,9 @@ export const dict = {
       consulting: 'Консалтинг',
       about: 'Обо мне',
       courses: 'Курсы',
+      pricing: 'Цены',
       contact: 'Контакт',
+      more: 'Ещё',
     },
     hero: {
       title: 'Консалтинг по аналитике данных и ИИ',
@@ -71,6 +75,7 @@ export const pageLanguages = {
   consulting: LANGS,
   about: LANGS,
   courses: ['ru'],
+  pricing: LANGS,
   contact: LANGS,
 }
 

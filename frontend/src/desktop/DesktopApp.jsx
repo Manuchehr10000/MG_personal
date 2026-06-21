@@ -1,43 +1,48 @@
-import { useEffect } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { useTranslation } from '../lib/i18n'
-import { LangLink } from '../ui/LangLink'
-import LanguageToggle from '../ui/LanguageToggle'
+import { pageLanguages, useLang } from '../lib/i18n'
+import Footer from '../ui/Footer'
+import DesktopHome from './DesktopHome'
+import DesktopNav from './DesktopNav'
+import DesktopPlaceholder from './DesktopPlaceholder'
 
-// Desktop workbook tree — lazy-loaded so this code never ships in the mobile
-// bundle. F1 sets up the fork and a thin shell only; the spreadsheet/workbook
-// metaphor and its components are later pieces. JetBrains Mono is loaded here
-// (desktop-only) so mobile never fetches it (DESIGN.md). The language framework
-// (toggle, language-aware links) is shared below the fork.
+// Desktop presentation tree — lazy-loaded so this code never ships in the mobile
+// bundle (decision 11). 003 builds the clean desktop layout chrome: sticky
+// scroll-nav, the six routed destinations, and the shared footer. The
+// workbook/spreadsheet metaphor (JetBrains Mono, grid, expressive shadows) is a
+// later piece and is deliberately NOT loaded here.
 export default function DesktopApp() {
-  const { t } = useTranslation()
-
-  useEffect(() => {
-    const id = 'jetbrains-mono-font'
-    if (document.getElementById(id)) return
-    const link = document.createElement('link')
-    link.id = id
-    link.rel = 'stylesheet'
-    link.href =
-      'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap'
-    document.head.appendChild(link)
-  }, [])
-
+  const lang = useLang()
   return (
-    <div className="min-h-dvh bg-surface-1">
-      <header className="flex h-14 items-center justify-between border-b border-default bg-surface-0 px-8">
-        <LangLink to="" className="font-display text-lead font-semibold text-ink-primary">
-          {t.brand}
-        </LangLink>
-        <LanguageToggle />
-      </header>
-      <main className="mx-auto max-w-5xl px-8 py-16">
-        <h1 className="font-display text-display font-black tracking-tight text-ink-primary">
-          {t.hero.title}
-        </h1>
-        <p className="mt-4 max-w-2xl text-lead text-ink-secondary">{t.hero.tagline}</p>
-        <p className="mt-10 font-mono text-caption text-ink-faint">{t.placeholder}</p>
+    <div className="flex min-h-dvh flex-col bg-surface-1">
+      <DesktopNav />
+      <main className="flex-1">
+        <Routes>
+          <Route index element={<DesktopHome />} />
+          <Route
+            path="consulting"
+            element={<DesktopPlaceholder titleKey="consulting" langs={pageLanguages.consulting} />}
+          />
+          <Route
+            path="about"
+            element={<DesktopPlaceholder titleKey="about" langs={pageLanguages.about} />}
+          />
+          <Route
+            path="courses"
+            element={<DesktopPlaceholder titleKey="courses" langs={pageLanguages.courses} />}
+          />
+          <Route
+            path="pricing"
+            element={<DesktopPlaceholder titleKey="pricing" langs={pageLanguages.pricing} />}
+          />
+          <Route
+            path="contact"
+            element={<DesktopPlaceholder titleKey="contact" langs={pageLanguages.contact} />}
+          />
+          <Route path="*" element={<Navigate to={`/${lang}`} replace />} />
+        </Routes>
       </main>
+      <Footer />
     </div>
   )
 }

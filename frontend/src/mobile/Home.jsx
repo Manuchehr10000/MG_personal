@@ -1,10 +1,11 @@
 import { localize } from '../lib/content'
 import { useTranslation } from '../lib/i18n'
 import { LangLink } from '../ui/LangLink'
+import Reveal from '../ui/Reveal'
 
-// Placeholder home — the F1 conversion path's landing surface. Marketing copy
-// and the real offer model arrive in later pieces (004+). Plain-language CTA,
-// flat, terracotta accent.
+// Placeholder home — the F1 conversion path's landing surface. Marketing copy and
+// the real offer model arrive in later pieces (004+). Plain-language CTA, flat,
+// terracotta accent. 003 wraps content in the shared reveal-on-scroll primitive.
 export default function Home() {
   const { lang, t } = useTranslation()
 
@@ -17,7 +18,7 @@ export default function Home() {
   const note = localize(ruOnlyDemo, lang) // no fallback -> null in EN
 
   return (
-    <section className="px-5 py-10">
+    <Reveal as="section" className="px-5 py-10">
       <img
         src="/images/hero.webp"
         alt=""
@@ -40,13 +41,10 @@ export default function Home() {
       <p className="mt-10 text-caption text-ink-faint">{t.placeholder}</p>
 
       {note.value && (
-        <p
-          data-testid="ru-only-item"
-          className="mt-4 border-l-4 border-accent-primary pl-3 text-caption text-ink-muted"
-        >
+        <p data-testid="ru-only-item" className="mt-4 shadow-rule pl-3 text-caption text-ink-muted">
           {note.value}
         </p>
       )}
-    </section>
+    </Reveal>
   )
 }

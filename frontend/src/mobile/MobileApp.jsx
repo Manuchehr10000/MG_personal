@@ -1,15 +1,17 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { pageLanguages } from '../lib/i18n'
+import Footer from '../ui/Footer'
 import Header from './Header'
 import Home from './Home'
 import Placeholder from './Placeholder'
 import TabBar from './TabBar'
 
-// Mobile presentation tree — the primary, touch-first experience and the only
-// presentation F1 builds out. Routes are relative to /:lang (mounted at
-// /:lang/* in App). Each placeholder declares the languages its route exists in
-// (pageLanguages) so the framework can grey the toggle / fall back per content.
+// Mobile presentation tree — the primary, touch-first experience. Layout chrome
+// (003): header (wordmark + 002 toggle), the six shell destinations, a shared
+// footer, and the native bottom tab bar. Routes are relative to /:lang. Each
+// placeholder declares the languages its route exists in (pageLanguages) so the
+// framework greys the toggle / falls back per content (002).
 export default function MobileApp({ lang }) {
   return (
     <div className="flex min-h-dvh flex-col bg-surface-1">
@@ -30,6 +32,10 @@ export default function MobileApp({ lang }) {
             element={<Placeholder titleKey="courses" langs={pageLanguages.courses} />}
           />
           <Route
+            path="pricing"
+            element={<Placeholder titleKey="pricing" langs={pageLanguages.pricing} />}
+          />
+          <Route
             path="contact"
             element={<Placeholder titleKey="contact" langs={pageLanguages.contact} />}
           />
@@ -37,6 +43,7 @@ export default function MobileApp({ lang }) {
           <Route path="*" element={<Navigate to={`/${lang}`} replace />} />
         </Routes>
       </main>
+      <Footer />
       <TabBar />
     </div>
   )

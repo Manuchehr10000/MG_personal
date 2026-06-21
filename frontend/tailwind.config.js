@@ -65,6 +65,28 @@ export default {
         semibold: '600',
         black: '900',
       },
+      // Spacing: DESIGN.md is an 8px base with a 4px half-step — Tailwind's default
+      // scale already lands on these (1=4px, 2=8px, ...), so no override is needed;
+      // components keep all margin/padding/gap on this scale.
+      //
+      // Flat elevation everywhere (DESIGN.md): separate with borders + surface
+      // steps, NOT shadows. The ONE allowed flat shadow is the terracotta
+      // rule-accent — an inset border technique, not elevation. The desktop
+      // workbook's expressive drop shadows are a later piece, not 003.
+      boxShadow: {
+        rule: 'inset 4px 0 0 0 #C2613A',
+      },
+      // Subtle, flat-consistent reveal-on-scroll. Applied only when an element
+      // scrolls into view AND prefers-reduced-motion is not set (see ui/Reveal).
+      keyframes: {
+        reveal: {
+          '0%': { opacity: '0', transform: 'translateY(8px)' },
+          '100%': { opacity: '1', transform: 'none' },
+        },
+      },
+      animation: {
+        reveal: 'reveal 500ms ease-out both',
+      },
     },
   },
   plugins: [],
