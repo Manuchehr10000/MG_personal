@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { pageLanguages } from '../lib/i18n'
+import ComingSoon from '../ui/ComingSoon'
 import Footer from '../ui/Footer'
 import About from './About'
 import Consulting from './Consulting'
@@ -34,6 +35,11 @@ export default function MobileApp({ lang }) {
           <Route
             path="contact"
             element={<Placeholder titleKey="contact" langs={pageLanguages.contact} />}
+          />
+          {/* Standalone diagnostic coming-soon (009) — footer-reachable, not a tab. */}
+          <Route
+            path="diagnostic"
+            element={<ComingSoon contentKey="diagnostic" langs={pageLanguages.diagnostic} />}
           />
           {/* Unknown path under a valid lang -> back to that lang's home. */}
           <Route path="*" element={<Navigate to={`/${lang}`} replace />} />

@@ -160,6 +160,16 @@ export const dict = {
       },
     },
     placeholder: 'Shell scaffold — full content arrives in later build pieces.',
+    // Diagnostic coming-soon (009). A STANDALONE route — not in DESTINATIONS / the
+    // tab bar / scroll-nav — reached by a footer link or a direct post-meeting link
+    // (journey 3). Its own content block (no nav-label dependency) so phase 3 mounts
+    // here cleanly. Real-shaped placeholder copy, owner-replaceable.
+    diagnostic: {
+      eyebrow: 'Diagnostic',
+      title: 'AI-readiness diagnostic — coming soon',
+      blurb:
+        'A short self-check that scores your organisation’s data and AI maturity and points to where to start. It is currently in development — if you have a direct link from a meeting, check back here soon.',
+    },
     footer: { rights: 'All rights reserved.' },
     // The toggle names the language you switch TO; `unavailable` is shown when the
     // current content has no other-language version (greyed, no dead route).
@@ -297,6 +307,12 @@ export const dict = {
       },
     },
     placeholder: 'Каркас оболочки — наполнение появится в следующих частях сборки.',
+    diagnostic: {
+      eyebrow: 'Диагностика',
+      title: 'Диагностика готовности к ИИ — скоро',
+      blurb:
+        'Короткий самотест, который оценивает зрелость ваших данных и ИИ и показывает, с чего начать. Сейчас он в разработке — если у вас есть прямая ссылка со встречи, загляните сюда позже.',
+    },
     footer: { rights: 'Все права защищены.' },
     toggle: { other: 'EN', label: 'Переключить на английский', unavailable: 'Недоступно на английском' },
     degraded: { fallbackNotice: 'Доступно только на английском — показана английская версия.' },
@@ -317,6 +333,8 @@ export const pageLanguages = {
   courses: ['ru'],
   pricing: LANGS,
   contact: LANGS,
+  // Diagnostic coming-soon (009) — bilingual standalone route (not in DESTINATIONS).
+  diagnostic: LANGS,
 }
 
 export function isLang(value) {

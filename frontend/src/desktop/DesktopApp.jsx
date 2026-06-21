@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { pageLanguages, useLang } from '../lib/i18n'
+import ComingSoon from '../ui/ComingSoon'
 import Footer from '../ui/Footer'
 import DesktopAbout from './DesktopAbout'
 import DesktopConsulting from './DesktopConsulting'
@@ -37,6 +38,11 @@ export default function DesktopApp() {
           <Route
             path="contact"
             element={<DesktopPlaceholder titleKey="contact" langs={pageLanguages.contact} />}
+          />
+          {/* Standalone diagnostic coming-soon (009) — footer-reachable, not in nav. */}
+          <Route
+            path="diagnostic"
+            element={<ComingSoon contentKey="diagnostic" langs={pageLanguages.diagnostic} />}
           />
           <Route path="*" element={<Navigate to={`/${lang}`} replace />} />
         </Routes>

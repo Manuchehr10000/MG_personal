@@ -24,6 +24,14 @@ export default function Footer() {
               {t.nav[d.key]}
             </LangLink>
           ))}
+          {/* Diagnostic (009): a standalone route, reachable by direct/footer link
+              only — deliberately OUTSIDE DESTINATIONS (not a tab / scroll-nav entry). */}
+          <LangLink
+            to="diagnostic"
+            className="text-caption font-semibold text-ink-muted hover:text-accent-primary"
+          >
+            {t.diagnostic.eyebrow}
+          </LangLink>
         </nav>
         <span className="text-caption text-ink-faint">
           {t.brand} — {t.footer.rights}
