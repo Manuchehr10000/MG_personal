@@ -51,15 +51,9 @@ describe('language framework (002)', () => {
     expect(screen.getByRole('heading')).toHaveTextContent('Курсы')
   })
 
-  it('hides a single-language content item cleanly, with no layout break', async () => {
-    const { unmount } = renderAt('/ru')
-    expect(await screen.findByTestId('ru-only-item')).toBeInTheDocument()
-    unmount()
-    renderAt('/en')
-    // Same page in EN: the RU-only item is simply absent (not greyed).
-    await screen.findByText('Data Analytics & AI Consulting')
-    expect(screen.queryByTestId('ru-only-item')).not.toBeInTheDocument()
-  })
+  // The item-level hide DEMO (002's ruOnlyDemo on Home) was superseded by the real
+  // bilingual home content in 004. The item-hide MECHANISM itself stays covered by
+  // the unit tests in lib/content.test.js ("item-hide: a missing language ...").
 
   it('keeps the default-language redirect (no 001 regression)', async () => {
     renderAt('/') // DEFAULT_LANG is ru
