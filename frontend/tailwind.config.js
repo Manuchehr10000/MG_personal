@@ -39,9 +39,13 @@ export default {
         },
       },
       // Border tokens map to class-friendly names: border-default / border-strong.
+      // The two dark-ground values are the workbook chrome's borders/dividers
+      // (DESIGN.md additions: title bar, status footer, inverse surfaces).
       borderColor: {
         default: '#DCD7C7',
         strong: '#C9C3B0',
+        'on-dark': '#44403A',
+        'on-dark-strong': '#33302A',
       },
       fontFamily: {
         // Satoshi (display), DM Sans (body). JetBrains Mono is desktop-only and

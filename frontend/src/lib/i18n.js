@@ -240,6 +240,27 @@ export const dict = {
         'A short self-check that scores your organisation’s data and AI maturity and points to where to start. It is currently in development — if you have a direct link from a meeting, check back here soon.',
     },
     footer: { rights: 'All rights reserved.' },
+    // Desktop-only workbook chrome strings (003 rev.4). The single-scroll workbook
+    // frame: window filename, command strip labels, status footer (READY + sheet
+    // count + lang + zoom), the cosmetic recalc flash, and the localized scroll-spy
+    // sheet-tab labels. Mobile never renders any of this (decision 11).
+    workbookChrome: {
+      filename: 'ghafforzoda.xlsx',
+      cell: 'A1',
+      ready: 'READY',
+      recalculating: 'RECALCULATING…',
+      sheetsLabel: 'sheets',
+      zoom: '100%',
+      commands: { refresh: 'Refresh', data: 'Data', export: 'Export' },
+      sheets: {
+        overview: 'Overview',
+        consulting: 'Consulting',
+        about: 'About',
+        courses: 'Courses',
+        pipeline: 'Pipeline',
+        contact: 'Contact',
+      },
+    },
     // The toggle names the language you switch TO; `unavailable` is shown when the
     // current content has no other-language version (greyed, no dead route).
     toggle: { other: 'RU', label: 'Switch to Russian', unavailable: 'Not available in Russian' },
@@ -445,6 +466,23 @@ export const dict = {
         'Короткий самотест, который оценивает зрелость ваших данных и ИИ и показывает, с чего начать. Сейчас он в разработке — если у вас есть прямая ссылка со встречи, загляните сюда позже.',
     },
     footer: { rights: 'Все права защищены.' },
+    workbookChrome: {
+      filename: 'ghafforzoda.xlsx',
+      cell: 'A1',
+      ready: 'ГОТОВО',
+      recalculating: 'ПЕРЕСЧЁТ…',
+      sheetsLabel: 'листов',
+      zoom: '100%',
+      commands: { refresh: 'Обновить', data: 'Данные', export: 'Экспорт' },
+      sheets: {
+        overview: 'Обзор',
+        consulting: 'Консалтинг',
+        about: 'Обо мне',
+        courses: 'Курсы',
+        pipeline: 'Развитие',
+        contact: 'Контакт',
+      },
+    },
     toggle: { other: 'EN', label: 'Переключить на английский', unavailable: 'Недоступно на английском' },
     degraded: { fallbackNotice: 'Доступно только на английском — показана английская версия.' },
   },

@@ -3,35 +3,42 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { pageLanguages } from '../lib/i18n'
 import ComingSoon from '../ui/ComingSoon'
 import Footer from '../ui/Footer'
-import About from './About'
-import Consulting from './Consulting'
-import Contact from './Contact'
 import Header from './Header'
-import Home from './Home'
 import Placeholder from './Placeholder'
-import Pricing from './Pricing'
 import TabBar from './TabBar'
 
-// Mobile presentation tree — the primary, touch-first experience. Layout chrome
-// (003): header (wordmark + 002 toggle), the six shell destinations, a shared
-// footer, and the native bottom tab bar. Routes are relative to /:lang. Each
-// placeholder declares the languages its route exists in (pageLanguages) so the
-// framework greys the toggle / falls back per content (002).
+// Mobile presentation tree (003 rev.4) — the primary, touch-first experience; stays
+// ROUTE-BASED (one native screen per route + bottom tab bar), NOT the desktop's
+// single-scroll workbook (decision 11). This piece renders each route as a labeled
+// PLACEHOLDER screen — the old page bodies (home/about/consulting/contact) are
+// superseded; their content returns per later sheet piece. /:lang/pricing folds into
+// /:lang/courses (redirect). Each placeholder declares the languages its route exists
+// in (pageLanguages) so the 002 toggle greys / falls back per content.
 export default function MobileApp({ lang }) {
   return (
     <div className="flex min-h-dvh flex-col bg-surface-1">
       <Header />
       <main className="flex-1">
         <Routes>
-          <Route index element={<Home />} />
-          <Route path="consulting" element={<Consulting langs={pageLanguages.consulting} />} />
-          <Route path="about" element={<About langs={pageLanguages.about} />} />
+          <Route index element={<Placeholder titleKey="home" langs={pageLanguages['']} />} />
+          <Route
+            path="consulting"
+            element={<Placeholder titleKey="consulting" langs={pageLanguages.consulting} />}
+          />
+          <Route
+            path="about"
+            element={<Placeholder titleKey="about" langs={pageLanguages.about} />}
+          />
           <Route
             path="courses"
             element={<Placeholder titleKey="courses" langs={pageLanguages.courses} />}
           />
-          <Route path="pricing" element={<Pricing langs={pageLanguages.pricing} />} />
-          <Route path="contact" element={<Contact langs={pageLanguages.contact} />} />
+          <Route
+            path="contact"
+            element={<Placeholder titleKey="contact" langs={pageLanguages.contact} />}
+          />
+          {/* Pricing folds into courses (003 rev.4). */}
+          <Route path="pricing" element={<Navigate to={`/${lang}/courses`} replace />} />
           {/* Standalone diagnostic coming-soon (009) — footer-reachable, not a tab. */}
           <Route
             path="diagnostic"

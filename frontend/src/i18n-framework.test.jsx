@@ -20,11 +20,12 @@ beforeEach(() => {
 
 describe('language framework (002)', () => {
   it('renders a page in both EN and RU via the route', async () => {
+    // 003 rev.4: routes render labeled placeholder screens (the h1 is the nav label).
     const { unmount } = renderAt('/en')
-    expect(await screen.findByText('Data Analytics & AI Consulting')).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'Home' })).toBeInTheDocument()
     unmount()
     renderAt('/ru')
-    expect(await screen.findByText('Консалтинг по аналитике данных и ИИ')).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'Главная' })).toBeInTheDocument()
   })
 
   it('the toggle is a real route swap to the same page in the other language', async () => {
@@ -51,17 +52,13 @@ describe('language framework (002)', () => {
     expect(screen.getByRole('heading')).toHaveTextContent('Курсы')
   })
 
-  // The item-level hide DEMO (002's ruOnlyDemo on Home) was superseded by the real
-  // bilingual home content in 004. The item-hide MECHANISM itself stays covered by
-  // the unit tests in lib/content.test.js ("item-hide: a missing language ...").
-
   it('keeps the default-language redirect (no 001 regression)', async () => {
     renderAt('/') // DEFAULT_LANG is ru
-    expect(await screen.findByText('Консалтинг по аналитике данных и ИИ')).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'Главная' })).toBeInTheDocument()
   })
 
   it('redirects an unknown language segment to the default language', async () => {
     renderAt('/xx')
-    expect(await screen.findByText('Консалтинг по аналитике данных и ИИ')).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'Главная' })).toBeInTheDocument()
   })
 })

@@ -1,49 +1,24 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { pageLanguages, useLang } from '../lib/i18n'
-import ComingSoon from '../ui/ComingSoon'
-import Footer from '../ui/Footer'
-import DesktopAbout from './DesktopAbout'
-import DesktopConsulting from './DesktopConsulting'
-import DesktopContact from './DesktopContact'
-import DesktopHome from './DesktopHome'
-import DesktopNav from './DesktopNav'
-import DesktopPlaceholder from './DesktopPlaceholder'
-import DesktopPricing from './DesktopPricing'
+import { useLang } from '../lib/i18n'
+import DesktopDiagnostic from './DesktopDiagnostic'
+import WorkbookFrame from './WorkbookFrame'
 
-// Desktop presentation tree — lazy-loaded so this code never ships in the mobile
-// bundle (decision 11). 003 builds the clean desktop layout chrome: sticky
-// scroll-nav, the six routed destinations, and the shared footer. The
-// workbook/spreadsheet metaphor (JetBrains Mono, grid, expressive shadows) is a
-// later piece and is deliberately NOT loaded here.
+// Desktop presentation tree (003 rev.4) — lazy-loaded so this code never ships in the
+// mobile bundle (decision 11). The desktop site IS one continuous scrolling workbook:
+// every shell route ('', consulting, about, courses, contact, and any unknown path)
+// renders the SAME WorkbookFrame, which deep-links to the matching sheet and keeps the
+// route ↔ sheet in sync. Two routes branch away from the workbook: /pricing folds into
+// /courses (redirect), and /diagnostic is a standalone coming-soon (009, not a sheet).
+// Because every workbook route matches the single `path="*"`, the frame stays mounted
+// as the route syncs while scrolling (no remount-on-scroll).
 export default function DesktopApp() {
   const lang = useLang()
   return (
-    <div className="flex min-h-dvh flex-col bg-surface-1">
-      <DesktopNav />
-      <main className="flex-1">
-        <Routes>
-          <Route index element={<DesktopHome />} />
-          <Route
-            path="consulting"
-            element={<DesktopConsulting langs={pageLanguages.consulting} />}
-          />
-          <Route path="about" element={<DesktopAbout langs={pageLanguages.about} />} />
-          <Route
-            path="courses"
-            element={<DesktopPlaceholder titleKey="courses" langs={pageLanguages.courses} />}
-          />
-          <Route path="pricing" element={<DesktopPricing langs={pageLanguages.pricing} />} />
-          <Route path="contact" element={<DesktopContact langs={pageLanguages.contact} />} />
-          {/* Standalone diagnostic coming-soon (009) — footer-reachable, not in nav. */}
-          <Route
-            path="diagnostic"
-            element={<ComingSoon contentKey="diagnostic" langs={pageLanguages.diagnostic} />}
-          />
-          <Route path="*" element={<Navigate to={`/${lang}`} replace />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="pricing" element={<Navigate to={`/${lang}/courses`} replace />} />
+      <Route path="diagnostic" element={<DesktopDiagnostic />} />
+      <Route path="*" element={<WorkbookFrame />} />
+    </Routes>
   )
 }

@@ -16,7 +16,7 @@ const setWidth = (w) => {
   window.innerWidth = w
 }
 
-// A destination may surface as both a nav link and a footer link; assert that at
+// A destination may surface as both a nav control and a footer link; assert that at
 // least one link with the given accessible name resolves to the expected href.
 function expectLinkTo(name, href) {
   expect(
@@ -24,7 +24,7 @@ function expectLinkTo(name, href) {
   ).toBe(true)
 }
 
-describe('nav + layout shell (003) — mobile', () => {
+describe('shell (003 rev.4) — mobile (route-based native screens)', () => {
   it('renders four primary tabs (language-aware) + a More entry', async () => {
     setWidth(375)
     renderAt('/en')
@@ -35,17 +35,17 @@ describe('nav + layout shell (003) — mobile', () => {
     expectLinkTo('Contact', '/en/contact')
   })
 
-  it('More opens a flat sheet with the overflow destinations (About, Pricing)', async () => {
+  it('More opens a flat sheet with the overflow destination (About); Pricing folded away', async () => {
     setWidth(375)
     renderAt('/en')
-    // Overflow items are not in the menu until More is opened.
     expect(screen.queryByRole('menuitem', { name: 'About' })).not.toBeInTheDocument()
     fireEvent.click(await screen.findByRole('button', { name: 'More' }))
     expect(await screen.findByRole('menuitem', { name: 'About' })).toHaveAttribute(
       'href',
       '/en/about',
     )
-    expect(screen.getByRole('menuitem', { name: 'Pricing' })).toHaveAttribute('href', '/en/pricing')
+    // Pricing folds into Courses (003 rev.4) — no longer a destination.
+    expect(screen.queryByRole('menuitem', { name: 'Pricing' })).not.toBeInTheDocument()
   })
 
   it('nav links carry the active language', async () => {
@@ -55,20 +55,26 @@ describe('nav + layout shell (003) — mobile', () => {
     expectLinkTo('Курсы', '/ru/courses')
   })
 
-  it('every shell destination route resolves (no dead links)', async () => {
+  it('each shell route renders a labeled placeholder screen (content lands later)', async () => {
     setWidth(375)
     for (const [path, heading] of [
-      // about (005) + consulting (006) + pricing (007) + contact (008) are real
-      // content — their h1 is the page title, not the nav label.
-      ['/en/about', 'Manuchehr Ghafforzoda'],
-      ['/en/pricing', 'Courses & pricing'],
-      ['/en/consulting', 'Consulting that moves the numbers'],
-      ['/en/contact', 'Get in touch'],
+      ['/en', 'Home'],
+      ['/en/consulting', 'Consulting'],
+      ['/en/about', 'About'],
+      ['/en/contact', 'Contact'],
     ]) {
       const { unmount } = renderAt(path)
-      expect(await screen.findByRole('heading', { name: heading })).toBeInTheDocument()
+      expect(await screen.findByRole('heading', { level: 1, name: heading })).toBeInTheDocument()
       unmount()
     }
+  })
+
+  it('redirects /:lang/pricing into the courses screen (pricing folds into courses)', async () => {
+    setWidth(375)
+    renderAt('/en/pricing')
+    // courses is RU-only (PRODUCT.md) -> falls back to the RU screen with a notice.
+    expect(await screen.findByRole('heading', { level: 1, name: 'Курсы' })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'Courses & pricing' })).not.toBeInTheDocument()
   })
 
   it('renders the shared footer', async () => {
@@ -79,26 +85,28 @@ describe('nav + layout shell (003) — mobile', () => {
   })
 })
 
-describe('nav + layout shell (003) — desktop', () => {
-  it('mounts the desktop tree with a sticky scroll-nav of all six destinations + the toggle', async () => {
+describe('shell (003 rev.4) — desktop (single-scroll workbook)', () => {
+  it('mounts the workbook chrome + a scroll-spy tab per section + the toggle + footer', async () => {
     setWidth(1280)
-    renderAt('/en')
-    // Wait for the lazy desktop tree (the toggle is part of the desktop nav).
+    const { container } = renderAt('/en')
+    // Wait for the lazy desktop tree (the toggle lives in the command bar).
     expect(await screen.findByRole('link', { name: /switch to russian/i })).toBeInTheDocument()
-    expectLinkTo('Home', '/en')
-    expectLinkTo('Courses', '/en/courses')
-    expectLinkTo('Consulting', '/en/consulting')
-    expectLinkTo('Contact', '/en/contact')
-    expectLinkTo('About', '/en/about')
-    expectLinkTo('Pricing', '/en/pricing')
+    // Workbook chrome — not the old top-nav.
+    expect(container.querySelector('[data-workbook="title-bar"]')).not.toBeNull()
+    expect(container.querySelector('[data-workbook="status-bar"]')).not.toBeNull()
+    expect(container.querySelector('[data-workbook="sheet-tabs"]')).not.toBeNull()
+    // One scroll-spy tab per stacked section.
+    for (const label of ['Overview', 'Consulting', 'About', 'Courses', 'Pipeline', 'Contact']) {
+      expect(screen.getByRole('button', { name: label })).toBeInTheDocument()
+    }
     // Shared footer present on desktop too.
     expect(screen.getByText(/All rights reserved\./)).toBeInTheDocument()
   })
 
-  it('desktop nav links resolve across /en and /ru (no regression in i18n)', async () => {
+  it('desktop footer links resolve across /en and /ru (no i18n regression)', async () => {
     setWidth(1280)
     renderAt('/ru')
-    await screen.findByRole('link', { name: /английский/i })
-    expectLinkTo('Цены', '/ru/pricing')
+    await screen.findByRole('link', { name: /английск/i })
+    expectLinkTo('Курсы', '/ru/courses')
   })
 })
